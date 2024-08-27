@@ -6,7 +6,8 @@ import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-function ShoppingCart() {
+
+function Fevorite() {
   const {
     handleClickFevorite,
     handleClickAddToCart,
@@ -22,10 +23,10 @@ function ShoppingCart() {
       <Header />
       <section className="w-full flex flex-col justify-center items-center">
         <div className="w-full max-w-[1440px] min-h-[85vh] flex flex-col py-[1.5rem] gap-[1.5rem]">
-          <h1 className="text-[3rem] font-semibold">Your Product Cart</h1>
+          <h1 className="text-[3rem] font-semibold">Fevorite Product</h1>
           <hr />
-          {addCartProduct[0] ? (
-            addCartProduct.map((product, index) => {
+          {addFevoriteProduct[0] ? (
+            addFevoriteProduct.map((product, index) => {
               return (
                 <div className="w-full h-[300px] border flex flex-row justify-between p-[1rem]">
                   <div className="w-[30%]">
@@ -44,7 +45,7 @@ function ShoppingCart() {
                         {product.title}
                       </Link>
                       <p className="line-clamp-3">
-                        <span className="font-semibold ">Detail :</span>{" "}
+                        <span className="font-semibold">Detail :</span>{" "}
                         {product.description}
                       </p>
                       <div className="w-auto flex flex-wrap">
@@ -62,12 +63,28 @@ function ShoppingCart() {
                     <Button
                       className="w-full"
                       onClick={() => {
-                        handleClickAddToCart(product.id);
-                        handleAddToCart(product);
+                        handleClickFevorite(product.id);
+                        handleAddToFevorite(product);
                       }}
                     >
-                      Remove from cart
+                      Unfevorite
                     </Button>
+                    {isAddToCart[product.id] ? (
+                      <Button className="w-full" variant="outline">
+                        <Link to="/shoppingcart">Check out your cart</Link>
+                      </Button>
+                    ) : (
+                      <Button
+                        className="w-full"
+                        onClick={() => {
+                          handleClickAddToCart(product.id);
+                          handleAddToCart(product);
+                        }}
+                      >
+                        Add to cart
+                      </Button>
+                    )}
+
                     <Button className="w-full">Buy</Button>
                   </div>
                 </div>
@@ -75,9 +92,9 @@ function ShoppingCart() {
             })
           ) : (
             <div className="w-full h-[70vh] flex flex-col justify-center items-center text-[1.5rem]">
-              <p>There is no product in yout Cart</p>
+              <p>There is no fevorite product</p>
               <p>
-                Check out our{" "}
+                Check out many our{" "}
                 <Link to="/" className=" underline font-semibold">
                   store
                 </Link>
@@ -91,4 +108,4 @@ function ShoppingCart() {
     </>
   );
 }
-export default ShoppingCart;
+export default Fevorite;
