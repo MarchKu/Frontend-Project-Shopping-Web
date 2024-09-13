@@ -23,12 +23,12 @@ function ProductDetail() {
       <Header />
       {product && (
         <section className="w-full flex flex-col justify-start items-center px-[5%] gap-[1rem] my-[1.5rem]">
-          <div className="w-full h-[60vh] max-w-[1440px] flex pt-[1.5rem] gap-[1.5rem] text-[1.25rem] border p-[1.5rem]">
+          <div className="w-full min-h-[60vh]  max-w-[1440px] flex pt-[1.5rem] gap-[1.5rem] text-[1.25rem] border p-[1.5rem]">
             <div className="w-[50%] h-full">
               <img
                 src={product.image}
                 alt="Product image"
-                className="size-full object-contain object-center"
+                className="size-full max-h-[60vh] object-contain object-center"
               />
             </div>
 
@@ -54,9 +54,9 @@ function ProductDetail() {
                   product.price
                 )} - ${Math.round(product.price + 25)} $`}</p>
               )}
-              <div className="w-full gap-[1rem] flex">
+              <div className="w-full gap-[1rem] flex flex-wrap">
                 <p className="text-[1.5rem] font-bold">Shipping</p>
-                <div className="flex gap-[1rem]">
+                <div className="flex  flex-wrap gap-[1rem]">
                   <Button
                     className="flex flex-col p-[1.5rem]"
                     variant="outline"
@@ -73,9 +73,9 @@ function ProductDetail() {
                   </Button>
                 </div>
               </div>
-              <div className="flex gap-[2.4rem]">
+              <div className="flex gap-[2.4rem] flex-wrap">
                 <p className="text-[1.5rem] font-bold">Option</p>
-                <div className="flex gap-[1rem]">
+                <div className="flex flex-wrap gap-[1rem]">
                   <Button
                     className="flex flex-col p-[1.5rem]"
                     variant="outline"
@@ -107,7 +107,7 @@ function ProductDetail() {
                 </div>
               </div>
 
-              <div className="w-full flex gap-[1.2rem]">
+              <div className="w-full flex flex-wrap gap-[1.2rem]">
                 <h3 className="text-[1.5rem] font-bold">Quantity</h3>
                 <div className="flex">
                   <Button
